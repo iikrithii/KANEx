@@ -1,0 +1,31 @@
+# ── Core deep learning ────────────────────────────────────────────────────────
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.37.0          # LLaVA, SAP-BERT, Clinical NER
+timm>=0.9.0                   # ViT-Small/16 pretrained backbone
+
+# ── Data / numerics ───────────────────────────────────────────────────────────
+numpy
+pandas
+Pillow
+scikit-learn
+scipy                         # Wilcoxon signed-rank test (significance testing)
+opencv-python                 # heatmap resizing, image enhancement
+
+# ── Visualisation ─────────────────────────────────────────────────────────────
+matplotlib
+tqdm
+
+# ── KAN layers (inline — no pip install needed for these two) ─────────────────
+# src/layers/efficient_kan.py   ← KANLinear  (B-splines, efficient-kan)
+# src/layers/conv_kan.py        ← KANConvNDLayer
+# src/layers/group_kan.py       ← GroupKANHead
+# src/layers/rational_kan.py    ← RationalKANLinear (install rkan below)
+
+# ── KAN dependencies ─────────────────────────────────────────────────────────
+rkan                          # RationalKAN Jacobi activations
+
+# ── LExT evaluation only (heavy; skip if not running evaluate_lext.py) ────────
+# transformers already covers SAP-BERT, Clinical NER, and LLaVA processor
+# LLaVA model weights download automatically on first run (~14GB)
+# accelerate>=0.20.0           # needed if LLaVA throws device_map errors
